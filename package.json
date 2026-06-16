@@ -1,0 +1,10 @@
+{
+  "name": "cima",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --prefix apps/field && node scripts/build-web.mjs",
+    "dev:api": "npm run dev --prefix services/api",
+    "dev:field": "npm run dev --prefix apps/field"
+  }
+}

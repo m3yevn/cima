@@ -1,0 +1,10 @@
+{
+  "installCommand": "npm install --prefix apps/field",
+  "buildCommand": "npm run build",
+  "outputDirectory": "apps/web/dist",
+  "rewrites": [
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/app", "destination": "/app/index.html" },
+    { "source": "/app/((?!assets/).*)", "destination": "/app/index.html" }
+  ]
+}
