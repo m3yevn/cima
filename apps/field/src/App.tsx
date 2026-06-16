@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const API = import.meta.env.VITE_API_URL || "https://cima-api.vercel.app";
+const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
 type Item = {
   id: string;
@@ -21,19 +21,19 @@ export default function App() {
 
   async function load() {
     const path = tab === "lab" ? "/items/test-queue" : "/items";
-    const res = await fetch(`${API}${path}`);
+    const res = await fetch(`${API_BASE}${path}`);
     const data = await res.json();
     setItems(data.items || []);
   }
 
   useEffect(() => {
-    load().catch(() => setError("API unavailable — deploy cima-api or run locally on :4010"));
+    load().catch(() => setError("Could not load deliveries. Check your connection and try again."));
   }, [tab]);
 
   async function addItem(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    const res = await fetch(`${API}/items`, {
+    const res = await fetch(`${API_BASE}/items`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -53,7 +53,7 @@ export default function App() {
   }
 
   async function submitResult(id: string, result: number) {
-    await fetch(`${API}/items/${id}/test-result`, {
+    await fetch(`${API_BASE}/items/${id}/test-result`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ result }),
