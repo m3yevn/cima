@@ -1,4 +1,3 @@
-/** In-memory store — seeded with demo deliveries for production demos. */
 const items = new Map();
 
 function seed() {
@@ -47,7 +46,9 @@ function seed() {
   for (const item of demos) items.set(item.id, item);
 }
 
-export function getStore() {
+function getStore() {
   seed();
   return items;
 }
+
+module.exports = { getStore };

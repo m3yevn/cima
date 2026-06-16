@@ -1,11 +1,13 @@
-export function needsLabTest(item) {
+function needsLabTest(item) {
   return item.shape === "cube" && item.weight > 10;
 }
 
-export function testStatusFromResult(resultPercent) {
+function testStatusFromResult(resultPercent) {
   return resultPercent > 50 ? "FAIL" : "PASS";
 }
 
-export function adjustCostAfterTest(cost, status) {
+function adjustCostAfterTest(cost, status) {
   return status === "FAIL" ? cost / 2 : cost;
 }
+
+module.exports = { needsLabTest, testStatusFromResult, adjustCostAfterTest };

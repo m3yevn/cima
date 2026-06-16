@@ -3,7 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "apps/web/dist",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/app", "destination": "/app/index.html" },
     { "source": "/app/((?!assets/).*)", "destination": "/app/index.html" }
