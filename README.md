@@ -22,9 +22,20 @@ cd apps/field && npm install && npm run dev      # :5174/app/
 
 ## Deploy
 
-1. **Web** — link repo root → `cima.vercel.app`
-2. **API** — link `services/api` → `cima-api.vercel.app`
-3. Set `VITE_API_URL` on web build to API URL
+**Canonical production URLs:**
+
+| Surface | URL |
+|---------|-----|
+| Landing | https://cima-flame.vercel.app |
+| Field app | https://cima-flame.vercel.app/app/ |
+| API | https://cima-flame.vercel.app/api/* (colocated) |
+
+> `cima-app.vercel.app` is **not** a separate deployment (returns 404). The field PWA lives at `/app/` on `cima-flame.vercel.app`.  
+> `cima.vercel.app` exists but `/app/` and `/api` are incomplete — do not use as canonical until aliased.
+
+1. **Web** — link repo root → Vercel project `cima` (hostname: `cima-flame.vercel.app`)
+2. **API** — colocated in `cima/api/` (no separate `cima-api` deploy required)
+3. Field app uses same-origin `/api` by default (`VITE_API_URL` optional)
 
 See [SETUP.md](./SETUP.md).
 
