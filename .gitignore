@@ -1,8 +1,28 @@
+# Dependencies
 node_modules/
+
+# Build outputs
 dist/
-.env
-.env.*
-*.log
-.DS_Store
 apps/web/dist/
 apps/web/public/app/
+apps/field/dist/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/
+
+# IDE / tooling
+.idea/
+.vscode/
+*.tsbuildinfo
+coverage/
+.turbo/
